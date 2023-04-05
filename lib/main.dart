@@ -1,4 +1,7 @@
+import 'package:fetch_data/Provider/appProvider.dart';
+import 'package:fetch_data/homeScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'home.dart';
 
@@ -11,9 +14,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Home(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_)=>appProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: homeScreen(),
+      ),
     );
   }
 }
+
+
+
